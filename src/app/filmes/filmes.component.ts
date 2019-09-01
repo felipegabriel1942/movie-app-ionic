@@ -24,7 +24,6 @@ export class FilmesComponent implements OnInit {
               public toastCtrl: ToastController) { }
 
   ngOnInit() {
-    console.log(this.filme);
     this.route.paramMap.subscribe(paramMap => {
       this.tituloFilmePesquisa = paramMap.get('nomeFilme');
     });
@@ -44,7 +43,6 @@ export class FilmesComponent implements OnInit {
               loadingEl.dismiss();
               return;
             }
-            console.log(success);
             this.filme.title = success.Title;
             this.filme.poster = success.Poster;
             this.filme.dataLancamento = success.Released;
@@ -57,19 +55,16 @@ export class FilmesComponent implements OnInit {
             this.filme.avaliacoes = success.Ratings;
             this.filme.idiomaOriginal = success.Language;
             this.filme.anoLancamento = success.Year;
-            console.log(this.filme);
             this.filmesService.getMovieImages(this.filme.title, this.filme.anoLancamento).subscribe(
               (success: any ) => {
                 this.listaImagensSlider = [];
                 success.items.forEach(element => {
                   this.listaImagensSlider.push(element.link);
                 });
-                console.log(this.listaImagensSlider);
               }
             );
             this.filmesService.getMovieTrailers(this.filme.title, this.filme.anoLancamento).subscribe(
               (success: any) => {
-                console.log(success);
                 loadingEl.dismiss();
               }
             );

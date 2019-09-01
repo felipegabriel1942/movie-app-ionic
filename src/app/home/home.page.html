@@ -9,24 +9,27 @@
     </ion-toolbar>
   </ion-header>
 <ion-content >
-  <ion-row style="width: 100%;">
-    <ion-card style="width: 100%;">
-      <ion-card-content>
-        <ion-card-title>
-          <ion-text>Dicas de filmes</ion-text> 
-        </ion-card-title>
-      </ion-card-content>
-      <ion-card-content style="padding-top: 0%">
-        <ion-grid>
-          <ion-row >
-            <ion-col *ngFor="let dica of listaDicasFilmes" size="6">
-              <img [src]="dica.urlImagem" 
-                style="height: 100%;"
-                [routerLink]="['/','filmes', dica.titulo]">
-            </ion-col>
-          </ion-row>
-        </ion-grid>        
-      </ion-card-content>
-    </ion-card>
-  </ion-row>
+  <ion-grid >
+    <ion-row style="width: 100%; ">
+      <ion-card style="width: 100%;">
+        <ion-card-content>
+          <ion-card-title style="border-bottom: 2px solid gray;">
+            <ion-icon name="videocam" style="color: gray; margin-right: 2%;"></ion-icon>
+            <ion-text >Dicas de filmes</ion-text> 
+          </ion-card-title>
+        </ion-card-content>
+        <ion-card-content style="padding-top: 0%">
+          <ion-grid>
+            <ion-row >
+              <ion-col *ngFor="let dica of listaDicasFilmes" size="6">
+                <img [src]="dica.urlImagem" 
+                  style="height: 100%;"
+                  [routerLink]="['/','filmes', dica.titulo]">
+              </ion-col>
+            </ion-row>
+          </ion-grid>        
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
 </ion-content>
