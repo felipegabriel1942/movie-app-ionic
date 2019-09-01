@@ -1,7 +1,18 @@
-
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>
+        Movie Tips
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content >
-  <ion-row style="margin-top: 59px;">
-      <ion-button [routerLink]="['/','filmes']">Filmes</ion-button>
+  <ion-card>
+    <ion-card-content>
+      <ion-text>Bem vindo ao movie tips!</ion-text>
+    </ion-card-content>
+  </ion-card>
+  <ion-row style="float: right">
+      <ion-button [routerLink]="['/','filmes']" style="padding-right: 5%;" >Filmes</ion-button>
   </ion-row>
 </ion-content>

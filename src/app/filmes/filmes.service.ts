@@ -19,4 +19,8 @@ export class FilmesService {
   getMovieImages(nomeFilme: string, anoFilme) {
     return this.http.get(`https://www.googleapis.com/customsearch/v1?key=${StorageKeys.googleSearchApiKey}&cx=${StorageKeys.customSearchEngineKey}&searchType=image&q=${nomeFilme}+${anoFilme}`);
   }
+
+  getMovieTrailers(nomeFilme: string, anoFilme) {
+    return this.http.get(`https://www.googleapis.com/youtube/v3/search?key=${StorageKeys.googleSearchApiKey}&part=snippet&q=${nomeFilme}+${anoFilme}+trailer`);
+  }
 }

@@ -48,6 +48,12 @@ export class FilmesComponent implements OnInit {
               console.log(this.listaImagensSlider);
             }
           );
+
+          this.filmesService.getMovieTrailers(this.filme.title, this.filme.anoLancamento).subscribe(
+            (success: any) => {
+              console.log(success);
+            }
+          );
         }
       );
     }
