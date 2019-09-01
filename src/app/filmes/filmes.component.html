@@ -1,0 +1,81 @@
+
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>
+        Pesquisa de filmes
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+<ion-content >
+  <ion-grid>
+    <ion-row>
+      <ion-searchbar [(ngModel)]="tituloFilmePesquisa" placeholder="Buscar filmes..." (ionBlur)="pesquisarFilme();"></ion-searchbar>
+    </ion-row>
+    <ion-row >
+    <ion-col size="12">
+      <ion-card *ngIf="filme.title != null && filme.title != undefined"> 
+        <ion-card-content style="padding-left: 0px;">
+          <ion-grid>
+            <ion-row>
+              <ion-col size-md="6">
+                <ion-img [src]="filme.poster" style="width: 100%; " ></ion-img>
+              </ion-col>
+              <ion-col size-md="6">
+                <ion-row>
+                  <ion-label style="color: black">Titulo:</ion-label>
+                </ion-row>
+                <ion-row>
+                  <ion-text>{{filme.title}}</ion-text>
+                </ion-row>
+                <ion-row>
+                  <ion-label style="color: black">Data de lançamento:</ion-label>
+                </ion-row>
+                <ion-row>
+                  <ion-text>{{filme.anoLancamento}}</ion-text>
+                </ion-row>
+                <ion-row>
+                  <ion-label style="color: black">Faixa etária:</ion-label>
+                </ion-row>
+                <ion-row>
+                  <ion-text>{{filme.classificacaoEtaria}}</ion-text>
+                </ion-row>
+                <ion-row>
+                  <ion-label style="color: black">Diretor:</ion-label>
+                </ion-row>
+                <ion-row>
+                  <ion-text>{{filme.diretor}}</ion-text>
+                </ion-row>
+                <ion-row>
+                  <ion-label style="color: black">Duração:</ion-label>
+                </ion-row>
+                <ion-row>
+                  <ion-text>{{filme.duracao}}</ion-text>
+                </ion-row>
+                 <ion-row>
+                  <ion-label style="color: black">Atores:</ion-label>
+                </ion-row>
+                <ion-row>
+                  <ion-text>{{filme.atores}}</ion-text>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content> 
+      </ion-card>
+      <ion-card *ngIf="filme.title != null && filme.title != undefined">
+        <ion-card-header style="padding-bottom: 0%">
+          <ion-card-title >Resumo:</ion-card-title>
+        </ion-card-header>
+        <ion-grid>
+          <ion-row padding>
+            <ion-text>
+              {{filme.resumoFilme}}
+            </ion-text>
+          </ion-row>
+        </ion-grid>
+
+      </ion-card>
+    </ion-col>
+    </ion-row>
+  </ion-grid>      
+</ion-content>
