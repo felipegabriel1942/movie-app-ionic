@@ -13,7 +13,7 @@ export class FilmesComponent implements OnInit {
   formGroup: FormGroup;
   filme = new FilmeModel();
   tituloFilmePesquisa = 'robocop';
-
+  listaImagensSlider = [];
   constructor(private filmesService: FilmesService) { }
 
   ngOnInit() {
@@ -28,7 +28,7 @@ export class FilmesComponent implements OnInit {
           console.log(success);
           this.filme.title = success.Title;
           this.filme.poster = success.Poster;
-          this.filme.anoLancamento = success.Released;
+          this.filme.dataLancamento = success.Released;
           this.filme.resumoFilme = success.Plot;
           this.filme.duracao = success.Runtime;
           this.filme.classificacaoEtaria = success.Rated;
@@ -37,7 +37,17 @@ export class FilmesComponent implements OnInit {
           this.filme.atores = success.Actors;
           this.filme.avaliacoes = success.Ratings;
           this.filme.idiomaOriginal = success.Language;
+          this.filme.anoLancamento = success.Year;
           console.log(this.filme);
+          this.filmesService.getMovieImages(this.filme.title, this.filme.anoLancamento).subscribe(
+            (success: any ) => {
+              this.listaImagensSlider = [];
+              success.items.forEach(element => {
+                this.listaImagensSlider.push(element.link);
+              });
+              console.log(this.listaImagensSlider);
+            }
+          );
         }
       );
     }

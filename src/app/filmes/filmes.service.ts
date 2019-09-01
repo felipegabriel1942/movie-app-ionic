@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { StorageKeys } from '../keys/storage-keys';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilmesService {
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient,
+              ) { }
 
 
   getMovie(nomeFilme: string) {
-    console.log(nomeFilme);
-    return this.http.get(`http://www.omdbapi.com/?apikey=2be05d91&t=${nomeFilme}`);
+    return this.http.get(`http://www.omdbapi.com/?apikey=${StorageKeys.omdbapiKey}&t=${nomeFilme}`);
+  }
+
+  getMovieImages(nomeFilme: string, anoFilme) {
+    return this.http.get(`https://www.googleapis.com/customsearch/v1?key=${StorageKeys.googleSearchApiKey}&cx=${StorageKeys.customSearchEngineKey}&searchType=image&q=${nomeFilme}+${anoFilme}`);
   }
 }

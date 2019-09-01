@@ -2,7 +2,7 @@ export class FilmeModel {
     constructor(
         public title?: string,
         public poster?: string,
-        public anoLancamento?: string,
+        public dataLancamento?: string,
         public resumoFilme?: string,
         public diretor?: string,
         public genero?: string,
@@ -15,5 +15,6 @@ export class FilmeModel {
         public classificacaoEtaria?: string,
         public idiomaOriginal?: string,
         public atores?: string,
+        public anoLancamento?: string
     ) {}
 }

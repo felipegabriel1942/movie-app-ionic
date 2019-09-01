@@ -31,7 +31,7 @@
                   <ion-label style="color: black">Data de lançamento:</ion-label>
                 </ion-row>
                 <ion-row>
-                  <ion-text>{{filme.anoLancamento}}</ion-text>
+                  <ion-text>{{filme.dataLancamento}}</ion-text>
                 </ion-row>
                 <ion-row>
                   <ion-label style="color: black">Faixa etária:</ion-label>
@@ -52,7 +52,7 @@
                   <ion-text>{{filme.duracao}}</ion-text>
                 </ion-row>
                 <ion-row>
-                  <ion-label style="color: black">Atores:</ion-label>
+                  <ion-label style="color: black">Elenco:</ion-label>
                 </ion-row>
                 <ion-row>
                   <ion-text>{{filme.atores}}</ion-text>
@@ -102,7 +102,19 @@
           </ion-row>
         </ion-grid>
       </ion-card>
-    </ion-col>
+      <ion-card *ngIf="filme.title != null && filme.title != undefined" style="background-color: white;">
+        <ion-card-header style="padding-top:4%; padding-bottom: 2%;" >
+          <ion-card-title style="font-size: 18px;">Imagens</ion-card-title>
+        </ion-card-header>
+        <ion-grid>
+          <ion-slides pager="true" >
+            <ion-slide *ngFor="let imagem of listaImagensSlider">
+              <img [src]="imagem" style="height: 50%; width: 50%" >
+            </ion-slide>
+          </ion-slides>
+        </ion-grid>
+      </ion-card>
+      </ion-col>
     </ion-row>
   </ion-grid>      
 </ion-content>
