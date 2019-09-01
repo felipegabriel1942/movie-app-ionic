@@ -25,6 +25,7 @@ export class FilmesComponent implements OnInit {
     if (this.tituloFilmePesquisa !== '') {
       this.filmesService.getMovie(this.tituloFilmePesquisa).subscribe(
         (success: any) => {
+          console.log(success);
           this.filme.title = success.Title;
           this.filme.poster = success.Poster;
           this.filme.anoLancamento = success.Released;
@@ -35,10 +36,20 @@ export class FilmesComponent implements OnInit {
           this.filme.diretor = success.Director;
           this.filme.atores = success.Actors;
           this.filme.avaliacoes = success.Ratings;
+          this.filme.idiomaOriginal = success.Language;
           console.log(this.filme);
         }
       );
     }
   }
 
+  setImageIconSiteAvaliacao(site: string): string {
+    if (site === 'Internet Movie Database') {
+      return 'imdb.png';
+    } else if (site === 'Metacritic') {
+      return 'metacritic.png';
+    } else {
+      return 'rotten-tomatoes.jpg';
+    }
+  }
 }
