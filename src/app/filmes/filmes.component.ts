@@ -4,7 +4,7 @@ import { FormGroup} from '@angular/forms';
 import { FilmeModel } from './filme.model';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-filmes',
@@ -20,7 +20,8 @@ export class FilmesComponent implements OnInit {
   constructor(private filmesService: FilmesService,
               private youtube: YoutubeVideoPlayer,
               private route: ActivatedRoute,
-              private loadingCtrl: LoadingController) { }
+              private loadingCtrl: LoadingController,
+              public toastCtrl: ToastController) { }
 
   ngOnInit() {
     console.log(this.filme);
@@ -38,6 +39,11 @@ export class FilmesComponent implements OnInit {
         loadingEl.present();
         this.filmesService.getMovie(this.tituloFilmePesquisa).subscribe(
           (success: any) => {
+            if (success.Error === 'Movie not found!') {
+              this.mensagemErro('Filme não encontrado');
+              loadingEl.dismiss();
+              return;
+            }
             console.log(success);
             this.filme.title = success.Title;
             this.filme.poster = success.Poster;
@@ -67,6 +73,8 @@ export class FilmesComponent implements OnInit {
                 loadingEl.dismiss();
               }
             );
+          }, error => {
+            console.log('deu erro');
           }
         );
       });
@@ -85,5 +93,14 @@ export class FilmesComponent implements OnInit {
 
   abrirVideo() {
     this.youtube.openVideo('https://www.youtube.com/watch?v=er_xFGwIVIk');
+  }
+
+  async mensagemErro(mensagem: string) {
+    const mensagemErro = await this.toastCtrl.create({
+      message: mensagem,
+      duration: 3000,
+      color: 'danger'
+    });
+    mensagemErro.present();
   }
 }
