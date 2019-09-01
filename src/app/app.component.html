@@ -1,4 +1,24 @@
 
 <ion-app>
+  <ion-menu side="start" >
+    <ion-header >
+      <ion-toolbar color="primary">
+        <ion-avatar slot="start">
+          <img src="../../assets/icon/popcorn.png" style="margin-top: 10% ;width: 75%; height: 75%;">
+        </ion-avatar>
+        <ion-title>Movie Brain</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/filmes"> 
+            <ion-icon name="search" slot="start"></ion-icon>
+            <ion-label>Pesquisar filmes</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
   <ion-router-outlet main></ion-router-outlet>
 </ion-app>
