@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FilmesService } from './filmes.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FilmeModel } from './filme.model';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
 
 @Component({
   selector: 'app-filmes',
@@ -14,11 +15,13 @@ export class FilmesComponent implements OnInit {
   filme = new FilmeModel();
   tituloFilmePesquisa = 'robocop';
   listaImagensSlider = [];
-  constructor(private filmesService: FilmesService) { }
+  constructor(private filmesService: FilmesService,
+              private youtube: YoutubeVideoPlayer) { }
 
   ngOnInit() {
     console.log(this.filme);
     this.pesquisarFilme();
+    
   }
 
   pesquisarFilme() {
@@ -67,5 +70,9 @@ export class FilmesComponent implements OnInit {
     } else {
       return 'rotten-tomatoes.jpg';
     }
+  }
+
+  abrirVideo(){
+    this.youtube.openVideo('https://www.youtube.com/watch?v=er_xFGwIVIk');
   }
 }
