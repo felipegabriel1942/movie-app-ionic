@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FilmesService } from './filmes.service';
 import { FormGroup} from '@angular/forms';
 import { FilmeModel } from './filme.model';
-import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
-import { ActivatedRoute } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-filmes',
@@ -18,7 +17,6 @@ export class FilmesComponent implements OnInit {
   tituloFilmePesquisa = '';
   listaImagensSlider = [];
   constructor(private filmesService: FilmesService,
-              private youtube: YoutubeVideoPlayer,
               private route: ActivatedRoute,
               private loadingCtrl: LoadingController,
               public toastCtrl: ToastController) { }
@@ -84,10 +82,6 @@ export class FilmesComponent implements OnInit {
     } else {
       return 'rotten-tomatoes.jpg';
     }
-  }
-
-  abrirVideo() {
-    this.youtube.openVideo('https://www.youtube.com/watch?v=er_xFGwIVIk');
   }
 
   async mensagemErro(mensagem: string) {

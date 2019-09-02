@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { FilmesService } from './filmes.service';
 import { HttpClientModule } from '@angular/common/http';
-import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
 
 
 @NgModule({
@@ -19,6 +18,6 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
     HttpClientModule,
     FilmesRoutingModule
   ],
-  providers: [FilmesService, YoutubeVideoPlayer]
+  providers: [FilmesService]
 })
 export class FilmesModule { }
